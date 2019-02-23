@@ -15,8 +15,8 @@ public class GUI {
 
         private JFrame frame;
         private JButton btSend;
-        private JTextField tf1;
-        private JComboBox currency;
+        private JTextField tf1, tf2;
+        private JComboBox currency1, currency2;
         private String[] val = { "USD", "GBP", "JPY", "EUR", "AUD",
                                         "CAD", "DKK","NOK", "ZAR",
                                         "SEK", "CHF", "JOD", "LBP", "EGP"};
@@ -26,12 +26,18 @@ public class GUI {
             frame.setLayout(new BorderLayout());
             tf1 = new JTextField(10);
             btSend = new JButton("send!");
-            currency = new JComboBox (val);
-            currency.setSelectedIndex(0);
+            currency1 = new JComboBox (val);
+            currency1.setSelectedIndex(0);
+            currency2 = new JComboBox (val);
+            currency2.setSelectedIndex(0);
 
             frame.add(tf1);
-            frame.add(currency);
+            frame.add(currency1);
             frame.add(btSend);
+
+            Container container = frame.getContentPane();
+            container.setLayout(new BorderLayout());
+            container.add("Center", currency2);
 
 
 

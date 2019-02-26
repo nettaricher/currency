@@ -98,16 +98,29 @@ public class Client extends JPanel{
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             //TODO: show all rates table.
-                Iterator it = exchangeRates.entrySet().iterator();
-                int i=0;
-                while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry)it.next();
-                    model.setValueAt(((CurrencyPair)pair.getKey()).getFrom(),i,0);
-                    model.setValueAt(((CurrencyPair)pair.getKey()).getTo(),i,1);
-                    BigDecimal val = new BigDecimal((Double)pair.getValue());
-                    val = val.setScale(2, RoundingMode.CEILING);
-                    model.setValueAt(val,i++,2);
-                   // it.remove(); // avoids a ConcurrentModificationException
+                //Iterator it = exchangeRates.entrySet().iterator();
+//                int i=0;
+//                while (it.hasNext()) {
+//                    Map.Entry pair = (Map.Entry)it.next();
+//                    model.setValueAt(((CurrencyPair)pair.getKey()).getFrom(),i,0);
+//                    model.setValueAt(((CurrencyPair)pair.getKey()).getTo(),i,1);
+//                    BigDecimal val = new BigDecimal((Double)pair.getValue());
+//                    val = val.setScale(2, RoundingMode.CEILING);
+//                    model.setValueAt(val,i++,2);
+//                   // it.remove(); // avoids a ConcurrentModificationException
+//                }
+//
+
+                int i = 0;
+                for (Currency from : Currency.values()) {
+                    for (Currency to : Currency.values()) {
+                        BigDecimal val = new BigDecimal(exchangeRates.get(new CurrencyPair(from, to)));
+                        val = val.setScale(2, RoundingMode.CEILING);
+                        model.setValueAt(from, i, 0);
+                        model.setValueAt(to, i, 1);
+                        model.setValueAt(val, i, 2);
+                        ++i;
+                    }
                 }
 
             }
@@ -143,7 +156,7 @@ public class Client extends JPanel{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         //Fetch new data intervals
-        int delay = 5000; //milliseconds
+        int delay = 60000; //milliseconds
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 Rates.run();

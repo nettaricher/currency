@@ -57,6 +57,18 @@ public class xmlParser implements Runnable{
                         exchangeRates.put(new CurrencyPair(from, to), 1.0);
                     } else {
                         Double newRate = toShekels / toCurr;
+                        if (from == Currency.JPY){
+                            newRate /= 100;
+                        }
+                        else if (from == Currency.LBP){
+                            newRate /= 10;
+                        }
+                        else if (to == Currency.JPY){
+                            newRate *= 100;
+                        }
+                        else if (to == Currency.LBP){
+                            newRate *= 10;
+                        }
                         exchangeRates.put(new CurrencyPair(from, to), newRate);
                     }
                     ++j;

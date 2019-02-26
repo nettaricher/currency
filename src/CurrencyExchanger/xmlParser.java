@@ -10,7 +10,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 public class xmlParser implements Runnable{
+    public static final String XML_PATH = "/home/sagig/Documents/shenkar/third year/Java/0 - Homework/2-Currency/currency/src/CurrencyExchanger/currency.xml";
     private final Map<CurrencyPair, Double> exchangeRates = new HashMap<CurrencyPair, Double>();
     private Date date;
     public Date getDate() {
@@ -26,7 +28,7 @@ public class xmlParser implements Runnable{
         URL url;
         DocumentBuilderFactory factory;
         DocumentBuilder builder;
-        Document doc;
+        Document doc = null;
             try {
                 url = new URL("https://www.boi.org.il/currency.xml");
                 con = (HttpURLConnection) url.openConnection();
@@ -37,16 +39,26 @@ public class xmlParser implements Runnable{
                 builder = factory.newDocumentBuilder();
                 doc = builder.parse(is);
                 //Code = doc.getElementsByTagName("CURRENCYCODE");
-                Rate = doc.getElementsByTagName("RATE");
             } catch (java.net.MalformedURLException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             } catch (java.io.IOException e) {
-                e.printStackTrace();
+                //If could not GET xml file, open it locally.
+                try {
+                    File fXmlFile = new File(XML_PATH);
+                    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                    doc = dBuilder.parse(fXmlFile);
+                }catch(javax.xml.parsers.ParserConfigurationException ex){
+                    ex.printStackTrace();
+                }
+                catch (org.xml.sax.SAXException ex){ ex.printStackTrace();}
+                catch (IOException ex){ ex.printStackTrace();}
             } catch (javax.xml.parsers.ParserConfigurationException e) {
-                e.printStackTrace();
+              //  e.printStackTrace();
             } catch (org.xml.sax.SAXException e) {
-                e.printStackTrace();
+              //  e.printStackTrace();
             }
+            Rate = doc.getElementsByTagName("RATE");
             int i = 0, j;
             for (Currency from : Currency.values()) {
                 Double toShekels = Double.parseDouble(Rate.item(i).getFirstChild().getNodeValue());

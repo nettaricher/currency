@@ -97,28 +97,14 @@ public class Client extends JPanel{
 
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            //TODO: show all rates table.
-                //Iterator it = exchangeRates.entrySet().iterator();
-//                int i=0;
-//                while (it.hasNext()) {
-//                    Map.Entry pair = (Map.Entry)it.next();
-//                    model.setValueAt(((CurrencyPair)pair.getKey()).getFrom(),i,0);
-//                    model.setValueAt(((CurrencyPair)pair.getKey()).getTo(),i,1);
-//                    BigDecimal val = new BigDecimal((Double)pair.getValue());
-//                    val = val.setScale(2, RoundingMode.CEILING);
-//                    model.setValueAt(val,i++,2);
-//                   // it.remove(); // avoids a ConcurrentModificationException
-//                }
-//
-
                 int i = 0;
                 for (Currency from : Currency.values()) {
                     for (Currency to : Currency.values()) {
                         BigDecimal val = new BigDecimal(exchangeRates.get(new CurrencyPair(from, to)));
                         val = val.setScale(2, RoundingMode.CEILING);
-                        model.setValueAt(from, i, 0);
-                        model.setValueAt(to, i, 1);
-                        model.setValueAt(val, i, 2);
+                        model.setValueAt(from, i, 0);   //Set from currency
+                        model.setValueAt(to, i, 1);     //Set to currency
+                        model.setValueAt(val, i, 2);    //Set rate value
                         ++i;
                     }
                 }
@@ -128,10 +114,11 @@ public class Client extends JPanel{
     }
 
     public static void main(String[] args) {
+        //First, get the rates xml file and update hash table
         xmlParser Rates = new xmlParser();
         Rates.run();
         Map<CurrencyPair, Double> _exchangeRates;
-        //
+        //Read the fetched data from serialized hashmap in .ser file
         try {
             FileInputStream fileIn = new FileInputStream("rates.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -146,8 +133,8 @@ public class Client extends JPanel{
             c.printStackTrace();
             return;
         }
-        //
-        Client GUI = new Client(_exchangeRates);
+        //Create and run GUI
+        Client GUI = new Client(_exchangeRates);    //Send the c'tor and updated hashmap containing all data parsed
         JFrame frame = new JFrame();
         frame.getContentPane().add(GUI);
         frame.setTitle("Currency Exchanger");

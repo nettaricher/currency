@@ -1,5 +1,6 @@
 package CurrencyExchanger;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +8,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
@@ -45,12 +48,20 @@ public class Client extends JPanel{
         JButton convertCmd = new JButton("Convert");
         JButton getRates = new JButton("Rates Table");
         convertCmd.addActionListener(convertAction(amountInput, fromOptions, toOptions, convertText));
-        getRates.addActionListener(showAllRates());
         JPanel convert = new JPanel();
         convert.add(convertCmd);
-        convert.add(getRates);
         convert.add(convertText);
         add(convert);
+
+        //Table
+        Object rows[][] = new Object[Currency.values().length*Currency.values().length][];
+        Object columns[] = { "From", "To","Rate" };
+        DefaultTableModel model = new DefaultTableModel(rows, columns);
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        add(scrollPane, BorderLayout.CENTER);
+        getRates.addActionListener(showAllRates(model));
+        convert.add(getRates);
     }
     private void updateRates(){
         try {
@@ -99,11 +110,23 @@ public class Client extends JPanel{
             }
         };
     }
-    private ActionListener showAllRates() {
+    private ActionListener showAllRates(DefaultTableModel model) {
 
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             //TODO: show all rates table.
+                Iterator it = exchangeRates.entrySet().iterator();
+                int i=0;
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry)it.next();
+                    model.setValueAt(((CurrencyPair)pair.getKey()).getFrom(),i,0);
+                    model.setValueAt(((CurrencyPair)pair.getKey()).getTo(),i,1);
+                    BigDecimal val = new BigDecimal((Double)pair.getValue());
+                    val = val.setScale(2, RoundingMode.CEILING);
+                    model.setValueAt(val,i++,2);
+                    it.remove(); // avoids a ConcurrentModificationException
+                }
+
             }
         };
     }
@@ -115,7 +138,7 @@ public class Client extends JPanel{
         JFrame frame = new JFrame();
         frame.getContentPane().add(new Client());
         frame.setTitle("Currency Exchanger");
-        frame.setSize(500, 500);
+        frame.setSize(500, 620);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

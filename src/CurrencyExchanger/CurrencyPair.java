@@ -4,6 +4,14 @@ public class CurrencyPair implements java.io.Serializable{
     private final Currency from;
     private final Currency to;
 
+    public Currency getFrom() {
+        return from;
+    }
+
+    public Currency getTo() {
+        return to;
+    }
+
     public CurrencyPair(Currency from, Currency to) {
         this.from = from;
         this.to = to;

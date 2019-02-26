@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Client extends JPanel{
-    private Map<CurrencyPair, Double> exchangeRates = new HashMap<CurrencyPair, Double>();
+    private Map<CurrencyPair, Double> exchangeRates = new HashMap<>();
 
     public Client() {
         super(new FlowLayout(FlowLayout.LEADING));
@@ -103,16 +103,15 @@ public class Client extends JPanel{
 
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-
+            //TODO: show all rates table.
             }
         };
     }
 
-
     public static void main(String[] args) {
         xmlParser Rates = new xmlParser();
         Rates.run();
+        System.out.println(Rates.getDate());
         JFrame frame = new JFrame();
         frame.getContentPane().add(new Client());
         frame.setTitle("Currency Exchanger");
@@ -120,6 +119,16 @@ public class Client extends JPanel{
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        //Fetch new data intervals
+        int delay = 60000; //milliseconds
+        ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                Rates.run();
+                System.out.println(Rates.getDate());
+            }
+        };
+        new javax.swing.Timer(delay, taskPerformer).start();
+        //
     }
 
 }

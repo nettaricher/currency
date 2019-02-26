@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a818ef61-d6ec-4ad6-b128-3b86065e3eb3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CurrencyExchanger/Currency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/GUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/Main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/Main$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/Main$Currency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/Main$CurrencyPair.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/currency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Final Project/xmlThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xmlThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/xmlParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/xmlParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rates.ser" beforeDir="false" afterPath="$PROJECT_DIR$/rates.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,25 +19,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="57" column="34" lean-forward="true" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+            <state relative-caret-position="408">
+              <caret line="113" column="42" selection-start-line="113" selection-start-column="42" selection-end-line="113" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4656#4657#0" expanded="true" />
+                <element signature="e#4739#4740#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="13" column="34" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="34" />
+            <state relative-caret-position="123">
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#463#485#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,6 +108,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -137,13 +131,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Netta Richer/year3/java/Final Project/src/parse.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551000725597" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551177006711" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -222,11 +215,20 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1278362" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.128943" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -239,10 +241,10 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286638" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32829374" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32937366" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32829374" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -272,23 +274,7 @@
     <entry file="file://$PROJECT_DIR$/out.ser" />
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/xmlThread.java" />
-    <entry file="file://$PROJECT_DIR$/src/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI.java" />
     <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Currency.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -300,22 +286,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="57" column="34" lean-forward="true" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="34" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="34" />
+        <state relative-caret-position="123">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#463#485#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="113" column="42" selection-start-line="113" selection-start-column="42" selection-end-line="113" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4656#4657#0" expanded="true" />
+            <element signature="e#4739#4740#0" expanded="true" />
           </folding>
         </state>
       </provider>

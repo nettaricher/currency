@@ -13,7 +13,6 @@ import java.util.Map;
 public class xmlParser implements Runnable{
     private final Map<CurrencyPair, Double> exchangeRates = new HashMap<CurrencyPair, Double>();
     private Date date;
-
     public Date getDate() {
         return date;
     }
@@ -48,7 +47,7 @@ public class xmlParser implements Runnable{
             } catch (org.xml.sax.SAXException e) {
                 e.printStackTrace();
             }
-            int i = 0, j = 0;
+            int i = 0, j;
             for (Currency from : Currency.values()) {
                 Double toShekels = Double.parseDouble(Rate.item(i).getFirstChild().getNodeValue());
                 j = 0;
@@ -71,7 +70,7 @@ public class xmlParser implements Runnable{
                 out.writeObject(exchangeRates);
                 out.close();
                 fileOut.close();
-                System.out.printf("Serialized data is saved in rates.ser");
+                System.out.println("Serialized data is updated in rates.ser");
             } catch (IOException e) {
                 e.printStackTrace();
             }

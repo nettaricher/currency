@@ -17,11 +17,10 @@ import java.util.Map;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Client extends JPanel{
-    private Map<CurrencyPair, Double> exchangeRates = new HashMap<>();
-
-    public Client() {
+    private Map<CurrencyPair, Double> exchangeRates;
+    public Client(Map<CurrencyPair, Double> rates) {
         super(new FlowLayout(FlowLayout.LEADING));
-
+        exchangeRates = rates;
         // Amount
         JTextField amountInput = new JTextField(20);
         JPanel amount = new JPanel();
@@ -46,38 +45,22 @@ public class Client extends JPanel{
         // Convert Action
         JLabel convertText = new JLabel();
         JButton convertCmd = new JButton("Convert");
-        JButton getRates = new JButton("Rates Table");
         convertCmd.addActionListener(convertAction(amountInput, fromOptions, toOptions, convertText));
         JPanel convert = new JPanel();
         convert.add(convertCmd);
         convert.add(convertText);
+        JButton getRates = new JButton("Rates Table");
+        add(getRates);
         add(convert);
 
         //Table
         Object rows[][] = new Object[Currency.values().length*Currency.values().length][];
         Object columns[] = { "From", "To","Rate" };
         DefaultTableModel model = new DefaultTableModel(rows, columns);
+        getRates.addActionListener(showAllRates(model));
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
-        getRates.addActionListener(showAllRates(model));
-        convert.add(getRates);
-    }
-    private void updateRates(){
-        try {
-            FileInputStream fileIn = new FileInputStream("rates.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            exchangeRates = (HashMap<CurrencyPair, Double>) in.readObject();
-            in.close();
-            fileIn.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return;
-        } catch (ClassNotFoundException c) {
-            System.out.println("class not found");
-            c.printStackTrace();
-            return;
-        }
     }
     private ActionListener convertAction(
             final JTextField amountInput,
@@ -103,12 +86,12 @@ public class Client extends JPanel{
                 CurrencyPair currencyPair = new CurrencyPair(
                         (Currency) fromOptions.getSelectedItem(),
                         (Currency) toOptions.getSelectedItem());
-                updateRates();
                 Double rate = exchangeRates.get(currencyPair);
                 Double amount = Double.parseDouble(amountInputText);
                 return amount*rate;
             }
         };
+
     }
     private ActionListener showAllRates(DefaultTableModel model) {
 
@@ -124,7 +107,7 @@ public class Client extends JPanel{
                     BigDecimal val = new BigDecimal((Double)pair.getValue());
                     val = val.setScale(2, RoundingMode.CEILING);
                     model.setValueAt(val,i++,2);
-                    it.remove(); // avoids a ConcurrentModificationException
+                   // it.remove(); // avoids a ConcurrentModificationException
                 }
 
             }
@@ -134,16 +117,33 @@ public class Client extends JPanel{
     public static void main(String[] args) {
         xmlParser Rates = new xmlParser();
         Rates.run();
-        System.out.println(Rates.getDate());
+        Map<CurrencyPair, Double> _exchangeRates;
+        //
+        try {
+            FileInputStream fileIn = new FileInputStream("rates.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            _exchangeRates = (HashMap<CurrencyPair, Double>) in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("class not found");
+            c.printStackTrace();
+            return;
+        }
+        //
+        Client GUI = new Client(_exchangeRates);
         JFrame frame = new JFrame();
-        frame.getContentPane().add(new Client());
+        frame.getContentPane().add(GUI);
         frame.setTitle("Currency Exchanger");
         frame.setSize(500, 620);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         //Fetch new data intervals
-        int delay = 60000; //milliseconds
+        int delay = 5000; //milliseconds
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 Rates.run();

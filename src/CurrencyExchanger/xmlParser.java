@@ -39,17 +39,11 @@ public class xmlParser implements Runnable{
             factory = DocumentBuilderFactory.newDefaultInstance();
             builder = factory.newDocumentBuilder();
             doc = builder.parse(is);
-            NAME            = doc.getElementsByTagName("NAME");
-            UNIT            = doc.getElementsByTagName("UNIT");
-            CURRENCYCODE    = doc.getElementsByTagName("CURRENCYCODE");
-            COUNTRY         = doc.getElementsByTagName("COUNTRY");
-            RATE            = doc.getElementsByTagName("RATE");
-            CHANGE          = doc.getElementsByTagName("CHANGE");
-            LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
+
         } catch (java.net.MalformedURLException e) {
             //e.printStackTrace();
         } catch (java.io.IOException e) {
-            //If could not GET xml file, open it locally.
+//            If could not GET xml file, open it locally.
             try {
                 File fXmlFile = new File(XML_PATH);
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -60,11 +54,20 @@ public class xmlParser implements Runnable{
             }
             catch (org.xml.sax.SAXException ex){ ex.printStackTrace();}
             catch (IOException ex){ ex.printStackTrace();}
-        } catch (javax.xml.parsers.ParserConfigurationException e) {
-          //  e.printStackTrace();
-        } catch (org.xml.sax.SAXException e) {
+        }
+        catch (javax.xml.parsers.ParserConfigurationException e) {
           //  e.printStackTrace();
         }
+        catch (org.xml.sax.SAXException e) {
+          //  e.printStackTrace();
+        }
+        NAME            = doc.getElementsByTagName("NAME");
+        UNIT            = doc.getElementsByTagName("UNIT");
+        CURRENCYCODE    = doc.getElementsByTagName("CURRENCYCODE");
+        COUNTRY         = doc.getElementsByTagName("COUNTRY");
+        RATE            = doc.getElementsByTagName("RATE");
+        CHANGE          = doc.getElementsByTagName("CHANGE");
+        LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
         //Create new XML for local storage
         Document dom = null;
         Element e = null;
@@ -139,28 +142,12 @@ public class xmlParser implements Runnable{
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(dom);
-            StreamResult result = new StreamResult(new File(XML_PATH));
+            StreamResult result = new StreamResult(new File("gui.xml"));
             transformer.transform(source, result);
             System.out.println("File saved!");
         } catch (TransformerException te) {
             System.out.println(te.getMessage());
         }
-            //
-
-
-            //Write to serialized file rates.ser
-//            try {
-//                FileOutputStream fileOut = new FileOutputStream("rates.ser");
-//                ObjectOutputStream out = new ObjectOutputStream(fileOut);
-//                out.writeObject(exchangeRates);
-//                out.close();
-//                fileOut.close();
-//                System.out.println("Serialized data is updated in rates.ser");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
-        //saveToXML(XML_PATH);
 
     }
 }

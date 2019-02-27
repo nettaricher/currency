@@ -23,11 +23,11 @@ import java.util.Map;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Client extends JPanel{
-    private static final String XML_PATH = "currency.xml";
+    private static final String XML_PATH = "gui.xml";
     private Map<CurrencyPair, Double> exchangeRates;
-    public Client(Map<CurrencyPair, Double> rates) {
+    public Client() {
         super(new FlowLayout(FlowLayout.LEADING));
-        exchangeRates = rates;
+        exchangeRates = new HashMap<>();
         // Amount
         JTextField amountInput = new JTextField(20);
         JPanel amount = new JPanel();
@@ -68,6 +68,66 @@ public class Client extends JPanel{
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
+    }
+    private void updateHashMap(){
+        InputStream is          = null;
+        HttpURLConnection con   = null;
+        NodeList LAST_UPDATE    = null;
+        NodeList NAME           = null;
+        NodeList UNIT           = null;
+        NodeList CURRENCYCODE   = null;
+        NodeList COUNTRY        = null;
+        NodeList RATE           = null;
+        NodeList CODE           = null;
+        NodeList CHANGE         = null;
+        URL url;
+        DocumentBuilderFactory factory;
+        DocumentBuilder builder;
+        Document doc = null;
+
+        try {
+            factory = DocumentBuilderFactory.newDefaultInstance();
+            builder = factory.newDocumentBuilder();
+            doc = builder.parse(new InputSource(XML_PATH));
+//            NAME            = doc.getElementsByTagName("NAME");
+//            UNIT            = doc.getElementsByTagName("UNIT");
+//            CURRENCYCODE    = doc.getElementsByTagName("CURRENCYCODE");
+//            COUNTRY         = doc.getElementsByTagName("COUNTRY");
+            RATE            = doc.getElementsByTagName("RATE");
+//            CHANGE          = doc.getElementsByTagName("CHANGE");
+            LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
+            System.out.println(LAST_UPDATE.item(0).getFirstChild().getNodeValue());
+        } catch (java.net.MalformedURLException e) {
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        } catch (javax.xml.parsers.ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (org.xml.sax.SAXException e) {
+            e.printStackTrace();
+        }
+
+        int i = 0, j;
+        for (Currency from : Currency.values()) {
+            Double toShekels = Double.parseDouble(RATE.item(i).getFirstChild().getNodeValue());
+            j = 0 ;
+            for (Currency to : Currency.values()) {
+                Double toCurr = Double.parseDouble(RATE.item(j).getFirstChild().getNodeValue());
+                Double newRate = toShekels / toCurr;
+                if (from == Currency.JPY) {
+                    newRate /= 100;
+                } else if (from == Currency.LBP) {
+                    newRate /= 10;
+                } else if (to == Currency.JPY) {
+                    newRate *= 100;
+                } else if (to == Currency.LBP) {
+                    newRate *= 10;
+                }
+                exchangeRates.put(new CurrencyPair(from, to), newRate);
+                ++j;
+            }
+            ++i;
+        }
     }
     private ActionListener convertAction(
             final JTextField amountInput,
@@ -124,71 +184,10 @@ public class Client extends JPanel{
         //First, get the rates xml file and update hash table
         xmlParser Rates = new xmlParser();
         Rates.run();
-        Map<CurrencyPair, Double> _exchangeRates = new HashMap<>();
-
-
-
-        InputStream is          = null;
-        HttpURLConnection con   = null;
-        NodeList LAST_UPDATE    = null;
-        NodeList NAME           = null;
-        NodeList UNIT           = null;
-        NodeList CURRENCYCODE   = null;
-        NodeList COUNTRY        = null;
-        NodeList RATE           = null;
-        NodeList CODE           = null;
-        NodeList CHANGE         = null;
-        URL url;
-        DocumentBuilderFactory factory;
-        DocumentBuilder builder;
-        Document doc = null;
-
-        try {
-            factory = DocumentBuilderFactory.newDefaultInstance();
-            builder = factory.newDocumentBuilder();
-            doc = builder.parse(new InputSource(XML_PATH));
-            NAME            = doc.getElementsByTagName("NAME");
-            UNIT            = doc.getElementsByTagName("UNIT");
-            CURRENCYCODE    = doc.getElementsByTagName("CURRENCYCODE");
-            COUNTRY         = doc.getElementsByTagName("COUNTRY");
-            RATE            = doc.getElementsByTagName("RATE");
-            CHANGE          = doc.getElementsByTagName("CHANGE");
-            LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
-        } catch (java.net.MalformedURLException e) {
-            e.printStackTrace();
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
-        } catch (javax.xml.parsers.ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (org.xml.sax.SAXException e) {
-            e.printStackTrace();
-        }
-
-        int i = 0, j;
-        for (Currency from : Currency.values()) {
-            Double toShekels = Double.parseDouble(RATE.item(i).getFirstChild().getNodeValue());
-            j = 0 ;
-            for (Currency to : Currency.values()) {
-                Double toCurr = Double.parseDouble(RATE.item(j).getFirstChild().getNodeValue());
-                Double newRate = toShekels / toCurr;
-                if (from == Currency.JPY) {
-                    newRate /= 100;
-                } else if (from == Currency.LBP) {
-                    newRate /= 10;
-                } else if (to == Currency.JPY) {
-                    newRate *= 100;
-                } else if (to == Currency.LBP) {
-                    newRate *= 10;
-                }
-                _exchangeRates.put(new CurrencyPair(from, to), newRate);
-                ++j;
-            }
-            ++i;
-        }
-
 
         //Create and run GUI
-        Client GUI = new Client(_exchangeRates);    //Send the c'tor and updated hashmap containing all data parsed
+        Client GUI = new Client();    //Send the c'tor and updated hashmap containing all data parsed
+        GUI.updateHashMap();            //update map according to fetched data
         JFrame frame = new JFrame();
         frame.getContentPane().add(GUI);
         frame.setTitle("Currency Exchanger");
@@ -201,6 +200,7 @@ public class Client extends JPanel{
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 Rates.run();
+                GUI.updateHashMap();
             }
         };
         new javax.swing.Timer(delay, taskPerformer).start();

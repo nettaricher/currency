@@ -10,8 +10,80 @@ import javax.xml.transform.stream.*;
 import org.xml.sax.*;
 import org.w3c.dom.*;
 
-public class xmlParser implements Runnable{
-    private static final String XML_PATH = "currency.xml";
+public class xmlParser implements Runnable, Model{
+    private static final String BACKUP = "currency.xml";
+    private static final String XML_PATH = "gui.xml";
+
+    private Map<CurrencyPair, Double> exchangeRates;
+
+    public xmlParser() {
+        this.exchangeRates = new HashMap<>();
+    }
+
+    public Map<CurrencyPair, Double> getExchangeRates() {
+        return exchangeRates;
+    }
+
+    public void updateHashMap(){
+        InputStream is          = null;
+        HttpURLConnection con   = null;
+        NodeList LAST_UPDATE    = null;
+        NodeList NAME           = null;
+        NodeList UNIT           = null;
+        NodeList CURRENCYCODE   = null;
+        NodeList COUNTRY        = null;
+        NodeList RATE           = null;
+        NodeList CODE           = null;
+        NodeList CHANGE         = null;
+        URL url;
+        DocumentBuilderFactory factory;
+        DocumentBuilder builder;
+        Document doc = null;
+
+        try {
+            factory = DocumentBuilderFactory.newDefaultInstance();
+            builder = factory.newDocumentBuilder();
+            doc = builder.parse(new InputSource(XML_PATH));
+//            NAME            = doc.getElementsByTagName("NAME");
+//            UNIT            = doc.getElementsByTagName("UNIT");
+//            CURRENCYCODE    = doc.getElementsByTagName("CURRENCYCODE");
+//            COUNTRY         = doc.getElementsByTagName("COUNTRY");
+            RATE            = doc.getElementsByTagName("RATE");
+//            CHANGE          = doc.getElementsByTagName("CHANGE");
+            LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
+            System.out.println(LAST_UPDATE.item(0).getFirstChild().getNodeValue());
+        } catch (java.net.MalformedURLException e) {
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        } catch (javax.xml.parsers.ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (org.xml.sax.SAXException e) {
+            e.printStackTrace();
+        }
+
+        int i = 0, j;
+        for (Currency from : Currency.values()) {
+            Double toShekels = Double.parseDouble(RATE.item(i).getFirstChild().getNodeValue());
+            j = 0 ;
+            for (Currency to : Currency.values()) {
+                Double toCurr = Double.parseDouble(RATE.item(j).getFirstChild().getNodeValue());
+                Double newRate = toShekels / toCurr;
+                if (from == Currency.JPY) {
+                    newRate /= 100;
+                } else if (from == Currency.LBP) {
+                    newRate /= 10;
+                } else if (to == Currency.JPY) {
+                    newRate *= 100;
+                } else if (to == Currency.LBP) {
+                    newRate *= 10;
+                }
+                exchangeRates.put(new CurrencyPair(from, to), newRate);
+                ++j;
+            }
+            ++i;
+        }
+    }
 
     @Override
     public void run() {
@@ -45,7 +117,7 @@ public class xmlParser implements Runnable{
         } catch (java.io.IOException e) {
 //            If could not GET xml file, open it locally.
             try {
-                File fXmlFile = new File(XML_PATH);
+                File fXmlFile = new File(BACKUP);
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
                 doc = dBuilder.parse(fXmlFile);

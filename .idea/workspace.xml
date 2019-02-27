@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a818ef61-d6ec-4ad6-b128-3b86065e3eb3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/CurrencyExchanger/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/xmlParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/xmlParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rates.ser" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" afterDir="false" />
     </list>
@@ -21,13 +22,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="189" column="78" lean-forward="true" selection-start-line="189" selection-start-column="78" selection-end-line="189" selection-end-column="78" />
+            <state relative-caret-position="-652">
+              <caret line="76" column="6" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2665#2666#0" expanded="true" />
+                <element signature="e#2715#2716#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#514#515#0" expanded="true" />
+                <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#647#648#0" expanded="true" />
+                <element signature="e#683#684#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -41,18 +69,6 @@
               <folding>
                 <element signature="e#483#484#0" expanded="true" />
                 <element signature="e#529#530#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2235">
-              <caret line="149" column="9" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,6 +95,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -102,8 +119,9 @@
         <option value="$PROJECT_DIR$/src/GUI.java" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/currency1.xml" />
-        <option value="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" />
+        <option value="$PROJECT_DIR$/src/CurrencyExchanger/Model.java" />
+        <option value="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" />
       </list>
     </option>
   </component>
@@ -113,7 +131,9 @@
     <option name="width" value="1391" />
     <option name="height" value="804" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -147,7 +167,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Netta Richer/year3/java/Final Project/src/parse.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551299341862" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551302549802" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -303,12 +323,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
+    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2235">
-          <caret line="149" column="9" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+        <state relative-caret-position="510">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#182#183#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -324,25 +347,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java">
+    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="-652">
+          <caret line="76" column="6" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
           <folding>
-            <element signature="e#182#183#0" expanded="true" />
-            <element signature="e#209#210#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2665#2666#0" expanded="true" />
+            <element signature="e#2715#2716#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="189" column="78" lean-forward="true" selection-start-line="189" selection-start-column="78" selection-end-line="189" selection-end-column="78" />
+        <state relative-caret-position="90">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+            <element signature="e#683#684#0" expanded="true" />
           </folding>
         </state>
       </provider>

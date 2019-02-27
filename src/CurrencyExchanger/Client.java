@@ -25,6 +25,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Client extends JPanel{
     private static final String XML_PATH = "gui.xml";
     private Map<CurrencyPair, Double> exchangeRates;
+
     public Client() {
         super(new FlowLayout(FlowLayout.LEADING));
         exchangeRates = new HashMap<>();
@@ -69,66 +70,11 @@ public class Client extends JPanel{
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
     }
-    private void updateHashMap(){
-        InputStream is          = null;
-        HttpURLConnection con   = null;
-        NodeList LAST_UPDATE    = null;
-        NodeList NAME           = null;
-        NodeList UNIT           = null;
-        NodeList CURRENCYCODE   = null;
-        NodeList COUNTRY        = null;
-        NodeList RATE           = null;
-        NodeList CODE           = null;
-        NodeList CHANGE         = null;
-        URL url;
-        DocumentBuilderFactory factory;
-        DocumentBuilder builder;
-        Document doc = null;
-
-        try {
-            factory = DocumentBuilderFactory.newDefaultInstance();
-            builder = factory.newDocumentBuilder();
-            doc = builder.parse(new InputSource(XML_PATH));
-//            NAME            = doc.getElementsByTagName("NAME");
-//            UNIT            = doc.getElementsByTagName("UNIT");
-//            CURRENCYCODE    = doc.getElementsByTagName("CURRENCYCODE");
-//            COUNTRY         = doc.getElementsByTagName("COUNTRY");
-            RATE            = doc.getElementsByTagName("RATE");
-//            CHANGE          = doc.getElementsByTagName("CHANGE");
-            LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
-            System.out.println(LAST_UPDATE.item(0).getFirstChild().getNodeValue());
-        } catch (java.net.MalformedURLException e) {
-            e.printStackTrace();
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
-        } catch (javax.xml.parsers.ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (org.xml.sax.SAXException e) {
-            e.printStackTrace();
-        }
-
-        int i = 0, j;
-        for (Currency from : Currency.values()) {
-            Double toShekels = Double.parseDouble(RATE.item(i).getFirstChild().getNodeValue());
-            j = 0 ;
-            for (Currency to : Currency.values()) {
-                Double toCurr = Double.parseDouble(RATE.item(j).getFirstChild().getNodeValue());
-                Double newRate = toShekels / toCurr;
-                if (from == Currency.JPY) {
-                    newRate /= 100;
-                } else if (from == Currency.LBP) {
-                    newRate /= 10;
-                } else if (to == Currency.JPY) {
-                    newRate *= 100;
-                } else if (to == Currency.LBP) {
-                    newRate *= 10;
-                }
-                exchangeRates.put(new CurrencyPair(from, to), newRate);
-                ++j;
-            }
-            ++i;
-        }
+    //
+    public void setExchangeRates(Map<CurrencyPair, Double> exchangeRates) {
+        this.exchangeRates = exchangeRates;
     }
+    //
     private ActionListener convertAction(
             final JTextField amountInput,
             final JComboBox fromOptions,
@@ -187,7 +133,9 @@ public class Client extends JPanel{
 
         //Create and run GUI
         Client GUI = new Client();    //Send the c'tor and updated hashmap containing all data parsed
-        GUI.updateHashMap();            //update map according to fetched data
+        Rates.updateHashMap();            //update map according to fetched data
+        //Get updated map with all rates
+        GUI.setExchangeRates(Rates.getExchangeRates());
         JFrame frame = new JFrame();
         frame.getContentPane().add(GUI);
         frame.setTitle("Currency Exchanger");
@@ -200,7 +148,9 @@ public class Client extends JPanel{
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 Rates.run();
-                GUI.updateHashMap();
+                Rates.updateHashMap();
+                //Get updated map with all rates
+                GUI.setExchangeRates(Rates.getExchangeRates());
             }
         };
         new javax.swing.Timer(delay, taskPerformer).start();

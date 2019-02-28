@@ -53,7 +53,6 @@ public class Client extends JPanel{
         // Convert Action
         JLabel convertText = new JLabel();
         JButton convertCmd = new JButton("Convert");
-        convertCmd.addActionListener(convertAction(amountInput, fromOptions, toOptions, convertText));
         JPanel convert = new JPanel();
         convert.add(convertCmd);
         convert.add(convertText);
@@ -65,35 +64,22 @@ public class Client extends JPanel{
         Object rows[][] = new Object[Currency.values().length*Currency.values().length][];
         Object columns[] = { "From", "To","Rate" };
         DefaultTableModel model = new DefaultTableModel(rows, columns);
-        getRates.addActionListener(showAllRates(model));
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
-    }
-    //
-    public void setExchangeRates(Map<CurrencyPair, Double> exchangeRates) {
-        this.exchangeRates = exchangeRates;
-    }
-    //
-    private ActionListener convertAction(
-            final JTextField amountInput,
-            final JComboBox fromOptions,
-            final JComboBox toOptions,
-            final JLabel convertText) {
 
-        return new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        /**handeling convertion*/
+        ActionListener convertAction = new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
                 // TODO: Needs proper validation
                 String amountInputText = amountInput.getText();
                 if ("".equals(amountInputText)) { return; }
-
                 // Convert
                 Double conversion = convertCurrency(amountInputText);
                 convertText.setText(NumberFormat
                         .getCurrencyInstance(Locale.US)
                         .format(conversion));
             }
-
             private Double convertCurrency(String amountInputText) {
                 // TODO: Needs proper rounding and precision setting
                 CurrencyPair currencyPair = new CurrencyPair(
@@ -104,12 +90,11 @@ public class Client extends JPanel{
                 return amount*rate;
             }
         };
-
-    }
-    private ActionListener showAllRates(DefaultTableModel model) {
-
-        return new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        convertCmd.addActionListener(convertAction);
+        //
+        /** handeling rates table display*/
+        ActionListener showAllRates = new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
                 int i = 0;
                 for (Currency from : Currency.values()) {
                     for (Currency to : Currency.values()) {
@@ -121,10 +106,15 @@ public class Client extends JPanel{
                         ++i;
                     }
                 }
-
             }
         };
+        getRates.addActionListener(showAllRates);
     }
+    //
+    public void setExchangeRates(Map<CurrencyPair, Double> exchangeRates) {
+        this.exchangeRates = exchangeRates;
+    }
+
 
     public static void main(String[] args) {
         //First, get the rates xml file and update hash table

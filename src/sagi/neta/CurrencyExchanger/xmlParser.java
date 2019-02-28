@@ -68,37 +68,20 @@ public class xmlParser implements Runnable, Model{
      *
      */
     public void updateHashMap() throws CurrencyException{
-        InputStream is          = null;
-        HttpURLConnection con   = null;
         NodeList LAST_UPDATE    = null;
-        NodeList NAME           = null;
-        NodeList UNIT           = null;
-        NodeList CURRENCYCODE   = null;
-        NodeList COUNTRY        = null;
         NodeList RATE           = null;
-        NodeList CODE           = null;
-        NodeList CHANGE         = null;
-        URL url;
         DocumentBuilderFactory factory;
         DocumentBuilder builder;
-        Document doc = null;
+        Document doc;
 
         try {
             logger.info("Reading locally saved updated xml file...");
-//
             factory = DocumentBuilderFactory.newDefaultInstance();
             builder = factory.newDocumentBuilder();
             doc = builder.parse(new InputSource(XML_PATH));
-//            NAME            = doc.getElementsByTagName("NAME");
-//            UNIT            = doc.getElementsByTagName("UNIT");
-//            CURRENCYCODE    = doc.getElementsByTagName("CURRENCYCODE");
-//            COUNTRY         = doc.getElementsByTagName("COUNTRY");
             RATE            = doc.getElementsByTagName("RATE");
-//            CHANGE          = doc.getElementsByTagName("CHANGE");
             LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
-            //TODO: DATE
             Date = LAST_UPDATE.item(0).getFirstChild().getNodeValue();
-            //
         } catch (java.net.MalformedURLException e) {
             e.printStackTrace();
             throw new CurrencyException("MalformedURLException",e);
@@ -112,7 +95,7 @@ public class xmlParser implements Runnable, Model{
             e.printStackTrace();
             throw new CurrencyException("SAXException",e);
         }
-
+        //
         int i = 0, j;
         for (sagi.neta.CurrencyExchanger.Currency from : sagi.neta.CurrencyExchanger.Currency.values()) {
             Double toShekels = Double.parseDouble(RATE.item(i).getFirstChild().getNodeValue());
@@ -154,7 +137,6 @@ public class xmlParser implements Runnable, Model{
         NodeList CURRENCYCODE   = null;
         NodeList COUNTRY        = null;
         NodeList RATE           = null;
-        NodeList CODE           = null;
         NodeList CHANGE         = null;
         URL url;
         DocumentBuilderFactory factory;
@@ -202,17 +184,17 @@ public class xmlParser implements Runnable, Model{
         CHANGE          = doc.getElementsByTagName("CHANGE");
         LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
         //Create new XML for local storage
-        Document dom = null;
-        Element e = null;
+        Document dom        = null;
+        Element e           = null;
         Element currencyEle = null;
         String _LAST_UPDATE = null;
-        String _NAME = null;
-        String _UNIT = null;
+        String _NAME        = null;
+        String _UNIT        = null;
         String _CURRENCYCODE = null;
-        String _COUNTRY = null;
-        String _RATE = null;
-        String _CHANGE = null;
-        Element rootEle = null;
+        String _COUNTRY     = null;
+        String _RATE        = null;
+        String _CHANGE      = null;
+        Element rootEle     = null;
         //
         // instance of a DocumentBuilderFactory
         logger.info("Building a new xml copy");

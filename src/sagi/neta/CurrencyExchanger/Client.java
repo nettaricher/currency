@@ -40,6 +40,7 @@ public class Client extends JPanel{
     private static final String XML_PATH = "gui.xml";
     private Map<CurrencyPair, Double> exchangeRates;
     static Logger logger = Logger.getLogger("Client GUI");
+    private String Date;
     //
 
     public Client() {
@@ -57,6 +58,10 @@ public class Client extends JPanel{
         amount.add(amountInput);
         amount.setBorder(BorderFactory.createTitledBorder("Enter Ammount"));
         add(amount, BorderLayout.CENTER);
+        //Date updated
+        JLabel dateText = new JLabel();
+        add(dateText, BorderLayout.CENTER);
+        dateText.setText("(Click 'Rates Table' to update)");
 
         // From
         JPanel from = new JPanel();
@@ -131,6 +136,7 @@ public class Client extends JPanel{
                         ++i;
                     }
                 }
+                dateText.setText("(Updated: "+Date+")");
             }
         };
         getRates.addActionListener(showAllRates);
@@ -139,6 +145,10 @@ public class Client extends JPanel{
     public void setExchangeRates(Map<CurrencyPair, Double> exchangeRates) {
         logger.info("Updated rates map.");
         this.exchangeRates = exchangeRates;
+    }
+    public void setDate(String newdate) {
+        logger.info("Updateding date");
+        this.Date = newdate;
     }
 
 
@@ -159,6 +169,7 @@ public class Client extends JPanel{
             Rates.updateHashMap();            //update map according to fetched data
             //Get updated map with all rates
             GUI.setExchangeRates(Rates.getExchangeRates());
+            GUI.setDate(Rates.getDate());
             JFrame frame = new JFrame();
             frame.getContentPane().add(GUI);
             frame.setTitle("Currency Exchanger");
@@ -176,6 +187,7 @@ public class Client extends JPanel{
                         Rates.updateHashMap();
                         //Get updated map with all rates
                         GUI.setExchangeRates(Rates.getExchangeRates());
+                        GUI.setDate(Rates.getDate());
                     }catch(CurrencyException e){e.printStackTrace();}
                 }
             };

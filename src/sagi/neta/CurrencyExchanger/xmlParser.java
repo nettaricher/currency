@@ -29,7 +29,8 @@ public class xmlParser implements Runnable, Model{
     private static final String BACKUP = "currency.xml";        //path for local xml file in case internet fails
     private static final String XML_PATH = "gui.xml";           //path for new updated xml created locally
     private Map<CurrencyPair, Double> exchangeRates;            //hashmap to hold all rates
-    static Logger logger = Logger.getLogger("xmlParser");      //Logger
+    static Logger logger = Logger.getLogger("xmlParser");       //Logger
+    private String Date;                                        //Date of update
     /**
      * Class constructor sets a new hashmap
      */
@@ -50,6 +51,15 @@ public class xmlParser implements Runnable, Model{
         logger.info("returning hashmap ref");
         return exchangeRates;
     }
+    /**
+     * Date getter
+     * @return the date of last update
+     */
+    public String getDate(){
+        logger.info("Responding with date");
+        return Date;
+    }
+
     /**
      * This method opens a locally saved xml file,
      * and parsing the data into an hashmap
@@ -87,7 +97,7 @@ public class xmlParser implements Runnable, Model{
 //            CHANGE          = doc.getElementsByTagName("CHANGE");
             LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
             //TODO: DATE
-            System.out.println(LAST_UPDATE.item(0).getFirstChild().getNodeValue());
+            Date = LAST_UPDATE.item(0).getFirstChild().getNodeValue();
             //
         } catch (java.net.MalformedURLException e) {
             e.printStackTrace();

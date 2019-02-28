@@ -1,4 +1,11 @@
-package CurrencyExchanger;
+/**
+ * The currency enum defines all currencies CODES
+ * and DESCRIPTION
+ *
+ * @author      Netta Richer
+ * @author      Sagi Granot
+ */
+package sagi.neta.CurrencyExchanger;
 
 enum Currency {
     USD("United States Dollar"),

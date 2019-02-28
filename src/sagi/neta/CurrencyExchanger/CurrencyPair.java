@@ -1,6 +1,13 @@
-package CurrencyExchanger;
+/**
+ * The CurrencyPair class defines a pair of currencies
+ * which represent a FROM currency and a TO currency
+ *
+ * @author      Netta Richer
+ * @author      Sagi Granot
+ */
+package sagi.neta.CurrencyExchanger;
 
-public class CurrencyPair implements java.io.Serializable{
+public class CurrencyPair{
     private final Currency from;
     private final Currency to;
 

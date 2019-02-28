@@ -1,4 +1,17 @@
-package CurrencyExchanger;
+/**
+ * The xmlParser class is the Model implementation.
+ * it implements Runnable in order to provide an option
+ * to run a thread for continuous checking of the up-to-date XML data
+ * and updating the data stored local in a file.
+ * it has an hashmap with all currency rates. -> (currency)FROM, (currency)TO, RATE
+ *
+ *
+ * @author      Netta Richer
+ * @author      Sagi Granot
+ * @see         sagi.neta.CurrencyExchanger.Currency
+ * @see         sagi.neta.CurrencyExchanger.CurrencyPair
+ */
+package sagi.neta.CurrencyExchanger;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9,22 +22,42 @@ import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
 import org.xml.sax.*;
 import org.w3c.dom.*;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 
 public class xmlParser implements Runnable, Model{
-    private static final String BACKUP = "currency.xml";
-    private static final String XML_PATH = "gui.xml";
-
-    private Map<CurrencyPair, Double> exchangeRates;
-
+    private static final String BACKUP = "currency.xml";        //path for local xml file in case internet fails
+    private static final String XML_PATH = "gui.xml";           //path for new updated xml created locally
+    private Map<CurrencyPair, Double> exchangeRates;            //hashmap to hold all rates
+    static Logger logger = Logger.getLogger("xmlParser");      //Logger
+    /**
+     * Class constructor sets a new hashmap
+     */
     public xmlParser() {
         this.exchangeRates = new HashMap<>();
+        BasicConfigurator.configure();
+        logger.info("xmlParser Constructor init");
     }
-
-    public Map<CurrencyPair, Double> getExchangeRates() {
+    /**
+     * Hashmap getter
+     * @return the hash map
+     */
+    public Map<CurrencyPair, Double> getExchangeRates() throws CurrencyException{
+        if (exchangeRates.size() <= 0) {
+            logger.info("HAsmap empty ... throwing exception");
+            throw new CurrencyException("HashMap is empty!", new Error());
+        }
+        logger.info("returning hashmap ref");
         return exchangeRates;
     }
-
-    public void updateHashMap(){
+    /**
+     * This method opens a locally saved xml file,
+     * and parsing the data into an hashmap
+     * the method calculates convertion ratio between
+     * every currency to every other currency
+     *
+     */
+    public void updateHashMap() throws CurrencyException{
         InputStream is          = null;
         HttpURLConnection con   = null;
         NodeList LAST_UPDATE    = null;
@@ -41,6 +74,8 @@ public class xmlParser implements Runnable, Model{
         Document doc = null;
 
         try {
+            logger.info("Reading locally saved updated xml file...");
+//
             factory = DocumentBuilderFactory.newDefaultInstance();
             builder = factory.newDocumentBuilder();
             doc = builder.parse(new InputSource(XML_PATH));
@@ -51,31 +86,38 @@ public class xmlParser implements Runnable, Model{
             RATE            = doc.getElementsByTagName("RATE");
 //            CHANGE          = doc.getElementsByTagName("CHANGE");
             LAST_UPDATE     = doc.getElementsByTagName("LAST_UPDATE");
+            //TODO: DATE
             System.out.println(LAST_UPDATE.item(0).getFirstChild().getNodeValue());
+            //
         } catch (java.net.MalformedURLException e) {
             e.printStackTrace();
+            throw new CurrencyException("MalformedURLException",e);
         } catch (java.io.IOException e) {
             e.printStackTrace();
+            throw new CurrencyException("IOException",e);
         } catch (javax.xml.parsers.ParserConfigurationException e) {
             e.printStackTrace();
+            throw new CurrencyException("ParserConfigurationException",e);
         } catch (org.xml.sax.SAXException e) {
             e.printStackTrace();
+            throw new CurrencyException("SAXException",e);
         }
 
         int i = 0, j;
-        for (Currency from : Currency.values()) {
+        for (sagi.neta.CurrencyExchanger.Currency from : sagi.neta.CurrencyExchanger.Currency.values()) {
             Double toShekels = Double.parseDouble(RATE.item(i).getFirstChild().getNodeValue());
             j = 0 ;
-            for (Currency to : Currency.values()) {
+            logger.info("Calculating rates from " + from + " to all other currencies...");
+            for (sagi.neta.CurrencyExchanger.Currency to : sagi.neta.CurrencyExchanger.Currency.values()) {
                 Double toCurr = Double.parseDouble(RATE.item(j).getFirstChild().getNodeValue());
                 Double newRate = toShekels / toCurr;
-                if (from == Currency.JPY) {
+                if (from == sagi.neta.CurrencyExchanger.Currency.JPY) {
                     newRate /= 100;
-                } else if (from == Currency.LBP) {
+                } else if (from == sagi.neta.CurrencyExchanger.Currency.LBP) {
                     newRate /= 10;
-                } else if (to == Currency.JPY) {
+                } else if (to == sagi.neta.CurrencyExchanger.Currency.JPY) {
                     newRate *= 100;
-                } else if (to == Currency.LBP) {
+                } else if (to == sagi.neta.CurrencyExchanger.Currency.LBP) {
                     newRate *= 10;
                 }
                 exchangeRates.put(new CurrencyPair(from, to), newRate);
@@ -83,8 +125,15 @@ public class xmlParser implements Runnable, Model{
             }
             ++i;
         }
-    }
+        logger.info("Done calculating hashmap with all rates.");
 
+    }
+    /**
+     * This run method is responsible of fetching new data from
+     * bank api, and creating a new identical xml file,
+     * and storing that locally.
+     *
+     */
     @Override
     public void run() {
         InputStream is          = null;
@@ -103,6 +152,7 @@ public class xmlParser implements Runnable, Model{
         Document doc = null;
         //Fetch XML from server
         try {
+            logger.info("trying to fetch xml from server...");
             url = new URL("https://www.boi.org.il/currency.xml");
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -117,6 +167,7 @@ public class xmlParser implements Runnable, Model{
         } catch (java.io.IOException e) {
 //            If could not GET xml file, open it locally.
             try {
+                logger.info("fetch from server failed. opening xml locally");
                 File fXmlFile = new File(BACKUP);
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -154,6 +205,7 @@ public class xmlParser implements Runnable, Model{
         Element rootEle = null;
         //
         // instance of a DocumentBuilderFactory
+        logger.info("Building a new xml copy");
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             // use factory to get an instance of document builder
@@ -171,7 +223,7 @@ public class xmlParser implements Runnable, Model{
         //
         //Create all currencies
         int i = 0;
-        for (Currency from : Currency.values()) {
+        for (sagi.neta.CurrencyExchanger.Currency from : Currency.values()) {
             // create node currency
             currencyEle = dom.createElement("CURRENCY");
             rootEle.appendChild(currencyEle);
@@ -216,9 +268,10 @@ public class xmlParser implements Runnable, Model{
             DOMSource source = new DOMSource(dom);
             StreamResult result = new StreamResult(new File("gui.xml"));
             transformer.transform(source, result);
-            System.out.println("File saved!");
+            logger.info("updated xml file saved!");
         } catch (TransformerException te) {
-            System.out.println(te.getMessage());
+            logger.info("Failed to save file");
+            logger.info(te.getMessage());
         }
 
     }

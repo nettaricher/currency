@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a818ef61-d6ec-4ad6-b128-3b86065e3eb3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_1_2_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/CurrencyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Final Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Currency.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/CurrencyPair.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Final Project/CurrencyExchanger/xmlParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/CurrencyPair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/Model.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/xmlParser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,51 +30,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="51" selection-start-line="51" selection-end-line="52" selection-end-column="44" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
+        <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/xmlParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="96" column="6" lean-forward="true" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+            <state relative-caret-position="51">
+              <caret line="273" column="41" selection-start-line="273" selection-start-column="41" selection-end-line="273" selection-end-column="41" />
               <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#2665#2666#0" expanded="true" />
-                <element signature="e#2715#2716#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Model.java">
+        <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/CurrencyException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-555">
-              <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            <state relative-caret-position="60">
+              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#514#515#0" expanded="true" />
-                <element signature="e#564#565#0" expanded="true" />
-                <element signature="e#647#648#0" expanded="true" />
-                <element signature="e#683#684#0" expanded="true" />
+                <element signature="e#135#136#0" expanded="true" />
+                <element signature="e#155#156#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Currency.java">
+        <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Currency.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
               <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="e#483#484#0" expanded="true" />
                 <element signature="e#529#530#0" expanded="true" />
               </folding>
@@ -66,10 +96,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java">
+        <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/CurrencyPair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="30">
+              <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
               <folding>
                 <element signature="e#182#183#0" expanded="true" />
                 <element signature="e#209#210#0" expanded="true" />
@@ -85,8 +115,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -104,22 +134,27 @@
         <option value="$PROJECT_DIR$/src/parse.java" />
         <option value="$PROJECT_DIR$/rates.txt" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/CurrencyExchanger/Currency.java" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPAir.java" />
         <option value="$PROJECT_DIR$/src/xmlThread.java" />
         <option value="$PROJECT_DIR$/src/GUI.java" />
-        <option value="$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/currency1.xml" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/Model.java" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java" />
+        <option value="$PROJECT_DIR$/src/CurrencyExchanger/Currency.java" />
+        <option value="$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java" />
         <option value="$PROJECT_DIR$/src/CurrencyExchanger/Client.java" />
+        <option value="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/CurrencyException.java" />
+        <option value="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Model.java" />
+        <option value="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Client.java" />
+        <option value="$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/xmlParser.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="647" />
+    <option name="x" value="286" />
     <option name="y" value="27" />
-    <option name="width" value="1261" />
+    <option name="width" value="1622" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -157,10 +192,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Netta Richer/year3/java/Final Project/src/parse.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551344052314" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551351301929" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/apache-log4j-1.2.17/log4j-1.2.17.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -174,7 +216,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Client (1)">
+    <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sagi.neta.CurrencyExchanger.Client" />
+      <module name="Final Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sagi.neta.CurrencyExchanger.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CurrencyExchanger.Client" />
       <module name="Final Project" />
@@ -214,9 +269,11 @@
       <item itemvalue="Application.GUI" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Client (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client (1)" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.GUI" />
@@ -247,10 +304,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="647" y="27" width="1261" height="1038" extended-state="0" />
+    <frame x="286" y="27" width="1622" height="1038" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.19423868" />
+      <window_info content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.1497462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -259,7 +316,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32935324" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19006479" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.81738174" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -267,7 +324,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.33333334" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32937366" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32829374" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3278328" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -314,10 +371,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/CurrencyPair.java">
+    <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/CurrencyPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="30">
+          <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
           <folding>
             <element signature="e#182#183#0" expanded="true" />
             <element signature="e#209#210#0" expanded="true" />
@@ -327,49 +384,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Currency.java">
+    <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        <state relative-caret-position="390">
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Currency.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="e#483#484#0" expanded="true" />
             <element signature="e#529#530#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Model.java">
+    <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/CurrencyException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/xmlParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-555">
-          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        <state relative-caret-position="60">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#683#684#0" expanded="true" />
+            <element signature="e#135#136#0" expanded="true" />
+            <element signature="e#155#156#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CurrencyExchanger/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="96" column="6" lean-forward="true" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
+        <state relative-caret-position="120">
+          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="51" selection-start-line="51" selection-end-line="52" selection-end-column="44" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#2665#2666#0" expanded="true" />
-            <element signature="e#2715#2716#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagi/neta/CurrencyExchanger/xmlParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="273" column="41" selection-start-line="273" selection-start-column="41" selection-end-line="273" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8.0_201</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Final Project</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>log4j-1.2.17</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
